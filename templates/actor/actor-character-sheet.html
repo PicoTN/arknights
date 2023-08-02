@@ -1,0 +1,143 @@
+<form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
+
+  {{!-- Sheet Header --}}
+  <header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+      {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
+      use both the "grid" and "grid-Ncol" class where "N" can be any number
+      from 1 to 12 and will create that number of columns.  --}}
+      <div class="resources grid grid-4col">
+
+        {{!-- "flex-group-center" is also defined in the _grid.scss file
+        and it will add a small amount of padding, a border, and will
+        center all of its child elements content and text. --}}
+        <div class="resource flex-group-center">
+          <label for="system.health.value" class="resource-label">Health</label>
+          <div class="resource-content flexrow flex-center flex-between">
+          <input type="text" name="system.health.value" value="{{system.health.value}}" data-dtype="Number"/>
+          <span> / </span>
+          <input type="text" name="system.health.max" value="{{system.health.max}}" data-dtype="Number"/>
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label for="system.attributes.infection.value" class="resource-label">infection</label>
+          <div class="resource-content flexrow flex-center flex-between">
+          <input type="text" name="system.attributes.infection.value" value="{{system.attributes.infection.value}}" data-dtype="Number"/>
+          <span> / </span>
+          <input type="text" name="system.attributes.infection.max" value="{{system.attributes.infection.max}}" data-dtype="Number"/>
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label for="system.attributes.exposure.value" class="resource-label rollable" data-roll="1@abilities.con.die" >exposure</label>
+          <div class="resource-content flexrow flex-center flex-between">
+          <input type="text" name="system.attributes.exposure.value" value="{{system.attributes.exposure.value}}" data-dtype="Number"/>
+          <span> / </span>
+          <input type="text" name="system.attributes.exposure.max" value="{{system.attributes.exposure.max}}" data-dtype="Number"/>
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label for="system.attributes.level.value" class="resource-label">Level</label>
+          <div class="resource-content flexrow flex-center flex-between">
+          <input type="text" name="system.attributes.level.value" value="{{system.attributes.level.value}}" data-dtype="Number"/>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    {{!-- Default tab is specified in actor-sheet.mjs --}}
+    <a class="item" data-tab="features">Features</a>
+    <a class="item" data-tab="description">Description</a>
+    {{!-- <a class="item" data-tab="items">Items</a> --}}
+    {{!-- <a class="item" data-tab="spells">Spells</a> --}}
+    {{!-- <a class="item" data-tab="effects">Effects</a> --}}
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+
+    {{!-- Owned Features Tab --}}
+    <div class="tab features" data-group="primary" data-tab="features">
+      <section class="grid grid-3col">
+        <aside class="sidebar">
+
+          {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
+          use both the "grid" and "grid-Ncol" class where "N" can be any number
+          from 1 to 12 and will create that number of columns.  --}}
+          <div class="abilities flexcol">
+            {{#each system.abilities as |ability key|}}
+            <div class="ability flexrow flex-group-center">
+              <input type="text" name="system.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
+              <label for="system.abilities.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="1@abilities.{{key}}.die" data-label="{{ability.label}}">{{ability.label}}</label>
+              <span class="ability-mod">{{ability.rank}}</span>
+            </div>
+            {{/each}}
+            <hr style="height:5px; border-width:2px; background-color:black;width:100%;">  
+            <div class="ability flexrow flex-group-center">
+              <label for="diceSize" class="resource-label flexlarge align-left">Dice size :</label>
+              <span class="ability-mod" name="diceSize" >{{system.abilities.att.die}}</span>
+            </div>
+            <div class="ability flexrow flex-group-center">
+              <label for="diceNumber" class="resource-label flexlarge align-left" >Dice number :</label>
+              <span class="ability-mod" name="diceNumber" >{{system.diceNumber}}</span>
+            </div>
+            <div class="ability flexrow flex-group-center">
+              <label for="movBonus" class="resource-label flexlarge align-left" >Movement Bonus :</label>
+              <span class="ability-mod" name="movBonus" >{{system.movBonus}}</span>
+            </div>
+            <div class="ability flexrow flex-group-center">
+              <label for="KOLength" class="resource-label flexlarge align-left" >KO Length :</label>
+              <span class="ability-mod" name="KOLength" >{{system.KOLength}}</span>
+            </div>
+            <div class="ability flexrow flex-group-center">
+              <label for="artsCards" class="resource-label flexlarge align-left" >Arts Cards :</label>
+              <span class="ability-mod" name="artsCards" >{{system.artsCards}}</span>
+            </div>
+            <hr style="height:5px; border-width:2px; background-color:black;width:100%;">
+            <button class="roll-button">
+              ROLL
+            </button>
+          </div>
+        </aside>
+
+        {{!-- For the main features list, span the right two columns --}}
+        <section class="main grid-span-2">
+          {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
+          {{> "systems/arknights/templates/actor/parts/actor-actions.html"}}
+        </section>
+
+      </section>
+    </div>
+
+    {{!-- Biography Tab --}}
+    <div class="tab biography" data-group="primary" data-tab="description">
+      {{!-- If you want TinyMCE editors to output inline rolls when rendered, you need to pass the actor's roll data to the rollData property. --}}
+      {{editor system.biography target="system.biography" rollData=rollData button=true owner=owner editable=editable}}
+    </div>
+
+    {{!-- Owned Items Tab --}}
+    <div class="tab items" data-group="primary" data-tab="items">
+       {{> "systems/arknights/templates/actor/parts/actor-items.html"}}
+    </div>
+
+    {{!-- Owned Spells Tab --}}
+    <div class="tab spells" data-group="primary" data-tab="spells">
+      {{> "systems/arknights/templates/actor/parts/actor-spells.html"}}
+    </div>
+
+    {{!-- Active Effects Tab --}}
+    <div class="tab effects flexcol" data-group="primary" data-tab="effects">
+      {{> "systems/arknights/templates/actor/parts/actor-effects.html"}}
+    </div>
+
+  </section>
+</form>
+

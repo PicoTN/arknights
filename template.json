@@ -1,0 +1,90 @@
+{
+  "Actor": {
+    "types": ["character", "enemy", "support"],
+    "templates": {
+      "base": {
+        "health": {
+          "value": 10,
+          "min": 0,
+          "max": 10
+        },
+        "biography": ""
+      }
+    },
+    "character": {
+      "templates": ["base"],
+      "attributes": {
+        "infection": {
+          "value": 0,
+          "min": 0,
+          "max": 100
+        },
+        "exposure": {
+          "value": 0,
+          "min": 0,
+          "max": 10
+        },
+        "level": {
+          "value": 1
+        }
+      },
+      "abilities": {
+        "att": {
+          "value": 3
+        },
+        "spd": {
+          "value": 3
+        },
+        "con": {
+          "value": 3
+        },
+        "mov": {
+          "value": 3
+        },
+        "art": {
+          "value": 3
+        }
+      }
+    },
+    "enemy": {
+      "templates": ["base"],
+      "cr": 0
+    },
+    "support": {
+      "templates": ["base"],
+      "cr": 0
+    }
+  },
+  "Item": {
+    "types": ["item", "feature", "spell", "action"],
+    "templates": {
+      "base": {
+        "description": ""
+      }
+    },
+    "item": {
+      "templates": ["base"],
+      "quantity": 1,
+      "weight": 0,
+      "formula": "d20 + @str.mod + ceil(@lvl / 2)"
+    },
+    "action": {
+      "templates": ["base"],
+      "uses":{
+        "value":1,
+        "min":0,
+        "max":4
+      },
+      "type":"weapon",
+      "imgRange":"",
+      "imgType":""
+    },
+    "spell": {
+      "templates": ["base"],
+      "spellLevel": 1
+    },
+    "feature": {
+      "templates": ["base"]
+    }
+  }
+}

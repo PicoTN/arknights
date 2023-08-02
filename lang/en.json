@@ -1,0 +1,20 @@
+{
+  "ARKNIGHTS.AbilityAtt": "Attack Power",
+  "ARKNIGHTS.AbilitySpd": "Attack Speed",
+  "ARKNIGHTS.AbilityCon": "Constitution",
+  "ARKNIGHTS.AbilityMov": "Movement Speed",
+  "ARKNIGHTS.AbilityArt": "Arts Capacity",
+
+  "ARKNIGHTS.AbilityAttAbbr": "att",
+  "ARKNIGHTS.AbilitySpdAbbr": "spd",
+  "ARKNIGHTS.AbilityConAbbr": "con",
+  "ARKNIGHTS.AbilityMovAbbr": "mov",
+  "ARKNIGHTS.AbilityArtAbbr": "art",
+
+  "ARKNIGHTS.EffectCreate": "Create Effect",
+  "ARKNIGHTS.EffectToggle": "Toggle Effect",
+  "ARKNIGHTS.EffectEdit": "Edit Effect",
+  "ARKNIGHTS.EffectDelete": "Delete Effect",
+
+  "ARKNIGHTS.Add": "Add"
+}
