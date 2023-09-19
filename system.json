@@ -2,7 +2,7 @@
   "id": "arknights",
   "title": "Arknights",
   "description": "The Arknights system for FoundryVTT!",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "compatibility": {
     "minimum": 10,
     "verified": "10.287",
@@ -28,7 +28,7 @@
   "secondaryTokenAttribute": "power",
   "url": "https://github.com/PicoTN/arknights",
   "manifest": "https://raw.githubusercontent.com/PicoTN/arknights/main/system.json",
-  "download": "https://github.com/PicoTN/arknights/archive/refs/tags/0.0.2.zip",
+  "download": "https://github.com/PicoTN/arknights/archive/refs/tags/0.0.3.zip",
   "license": "LICENSE.txt",
   "changelog": "CHANGELOG.md"
 }
