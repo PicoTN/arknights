@@ -46,8 +46,9 @@ export class ArknightsActorSheet extends ActorSheet {
     }
 
     // Prepare NPC data and items.
-    if (actorData.type == 'npc') {
+    if (actorData.type == 'enemy') {
       this._prepareItems(context);
+      this._prepareEnemyData(context);
     }
 
     // Add roll data for TinyMCE editors.

@@ -48,7 +48,28 @@
     },
     "enemy": {
       "templates": ["base"],
-      "cr": 0
+      "cr": 0,
+      "attributes": {
+        "infection": {
+          "value": 0,
+          "min": 0,
+          "max": 100
+        }
+      },
+      "abilities": {
+        "att": {
+          "value": 3
+        },
+        "def": {
+          "value": 3
+        },
+        "mov": {
+          "value": 3
+        },
+        "art": {
+          "value": 3
+        }
+      }
     },
     "support": {
       "templates": ["base"],
