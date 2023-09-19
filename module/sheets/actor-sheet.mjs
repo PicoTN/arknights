@@ -45,7 +45,7 @@ export class ArknightsActorSheet extends ActorSheet {
       this._prepareCharacterData(context);
     }
 
-    // Prepare NPC data and items.
+    // Prepare enemy data and items.
     if (actorData.type == 'enemy') {
       this._prepareItems(context);
       this._prepareEnemyData(context);

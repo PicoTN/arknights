@@ -33,7 +33,7 @@ export class ArknightsActor extends Actor {
     const systemData = actorData.system;
     const flags = actorData.flags.arknights || {};
 
-    // Make separate methods for each Actor type (character, npc, etc.) to keep
+    // Make separate methods for each Actor type (character, enemy, etc.) to keep
     // things organized.
     this._prepareCharacterData(actorData);
     this._prepareEnemyData(actorData);
